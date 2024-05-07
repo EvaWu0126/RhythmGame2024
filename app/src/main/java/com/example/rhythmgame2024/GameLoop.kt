@@ -7,7 +7,6 @@ class GameLoop(gamePanel: GamePanel) : Runnable{
 
     lateinit var gameThread: Thread
     lateinit var gamePanel : GamePanel
-
     public fun Gameloop(gamePanel: GamePanel) {
         this.gamePanel = gamePanel
         gameThread = Thread(this)
