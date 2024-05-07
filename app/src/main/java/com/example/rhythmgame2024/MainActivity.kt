@@ -10,11 +10,17 @@ class MainActivity : AppCompatActivity() {
         val TAG = "MainActivity"
     }
     private lateinit var binding: ActivityMainBinding
+    private lateinit var adapter : GameAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
+
+        loadSong()
+    }
+
+    private fun loadSong{
 
     }
 }
