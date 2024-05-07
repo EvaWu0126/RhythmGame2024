@@ -40,6 +40,7 @@ class GameAdapter(var gameList: List<Features>) :
             viewHolder.layout.setOnClickListener{
                 val detailIntent = Intent(context, GameScreen::class.java)
                 detailIntent.putExtra(GameScreen.EXTRA_GAME, features)
+                context.startActivity(detailIntent)
             }
         }
 

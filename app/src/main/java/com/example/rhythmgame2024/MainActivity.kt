@@ -17,10 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
 
-        loadSong()
     }
 
-    private fun loadSong{
 
-    }
 }
