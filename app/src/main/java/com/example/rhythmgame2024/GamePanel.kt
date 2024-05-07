@@ -1,42 +1,25 @@
-package com.example.rhythmgame2024;
+package com.example.rhythmgame2024
 
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
+import android.content.Context
+import android.graphics.Color
+import android.graphics.Paint
+import android.view.SurfaceHolder
+import android.view.SurfaceView
 
-import androidx.annotation.NonNull;
+class GamePanel(context: Context?) : SurfaceView(context), SurfaceHolder.Callback {
+    private val redPaint = Paint()
 
-public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
-    private Paint redPaint = new Paint();
-    public GamePanel(Context context) {
-        super(context);
-        getHolder().addCallback(this);
-        redPaint.setColor(Color.RED);
+    init {
+        holder.addCallback(this)
+        redPaint.color = Color.RED
     }
 
-
-
-
-
-    @Override
-    public void surfaceCreated(@NonNull SurfaceHolder surfaceHolder) {
-        Canvas c  = surfaceHolder.lockCanvas();
-
-        c.drawRect(50,50,100,100,redPaint);
-
-        surfaceHolder.unlockCanvasAndPost(c);
+    override fun surfaceCreated(surfaceHolder: SurfaceHolder) {
+        val c = surfaceHolder.lockCanvas()
+        c.drawRect(50f, 50f, 100f, 100f, redPaint)
+        surfaceHolder.unlockCanvasAndPost(c)
     }
 
-    @Override
-    public void surfaceChanged(@NonNull SurfaceHolder surfaceHolder, int i, int i1, int i2) {
-
-    }
-
-    @Override
-    public void surfaceDestroyed(@NonNull SurfaceHolder surfaceHolder) {
-
-    }
+    override fun surfaceChanged(surfaceHolder: SurfaceHolder, i: Int, i1: Int, i2: Int) {}
+    override fun surfaceDestroyed(surfaceHolder: SurfaceHolder) {}
 }

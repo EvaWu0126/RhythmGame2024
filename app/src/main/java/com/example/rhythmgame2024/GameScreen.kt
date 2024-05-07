@@ -7,7 +7,7 @@ class GameScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(GamePanel(this));
+        //setContentView(GamePanel(this));
 
 
     }
