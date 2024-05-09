@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +20,7 @@ class GameAdapter(var gameList: List<Features>) :
             val textViewAuthorName: TextView
             val textViewHighScore: TextView
             val textViewCombo: TextView
+            val imageViewPlay: ImageView
             val layout: ConstraintLayout
 
             init{
@@ -27,6 +29,7 @@ class GameAdapter(var gameList: List<Features>) :
                 textViewHighScore = view.findViewById(R.id.textView_songItem_highScore)
                 textViewCombo = view.findViewById(R.id.textView_songItem_combo)
                 layout = view.findViewById(R.id.layout_songItem)
+                imageViewPlay = view.findViewById(R.id.imageView_songItem_play)
             }
         }
         override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder{
@@ -42,7 +45,7 @@ class GameAdapter(var gameList: List<Features>) :
             viewHolder.textViewCombo.text = "Combo: " + gameList[position].combo.toString()
             viewHolder.textViewHighScore.text = "High Score: " + gameList[position].highScore.toString()
 
-            viewHolder.layout.setOnClickListener{
+            viewHolder.imageViewPlay.setOnClickListener{
                 val detailIntent = Intent(context, GameScreen::class.java)
                 detailIntent.putExtra(GameScreen.EXTRA_GAME, features)
                 context.startActivity(detailIntent)
