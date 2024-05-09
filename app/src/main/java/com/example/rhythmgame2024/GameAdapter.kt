@@ -1,6 +1,7 @@
 package com.example.rhythmgame2024
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 
 class GameAdapter(var gameList: List<Features>) :
     RecyclerView.Adapter<GameAdapter.ViewHolder>(){
+    companion object{
+        val TAG = "GameAdapter"
+    }
         class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
             val textViewSongName: TextView
             val textViewAuthorName: TextView
@@ -32,10 +36,11 @@ class GameAdapter(var gameList: List<Features>) :
         override fun onBindViewHolder(viewHolder: ViewHolder, position: Int){
             val features = gameList[position]
             val context = viewHolder.layout.context
-            viewHolder.textViewSongName.text = gameList[position].song.name
-            viewHolder.textViewAuthorName.text = gameList[position].song.author
-            viewHolder.textViewCombo.text = gameList[position].combo
-            viewHolder.textViewHighScore.text = gameList[position].highScore
+            viewHolder.textViewSongName.text = gameList[position].name
+            viewHolder.textViewAuthorName.text = gameList[position].author
+            Log.d(TAG, "onBindViewHolder: name =" + viewHolder.textViewSongName.text + " author = " + viewHolder.textViewAuthorName.text)
+            viewHolder.textViewCombo.text = "Combo: " + gameList[position].combo.toString()
+            viewHolder.textViewHighScore.text = "High Score: " + gameList[position].highScore.toString()
 
             viewHolder.layout.setOnClickListener{
                 val detailIntent = Intent(context, GameScreen::class.java)

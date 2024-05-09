@@ -22,7 +22,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
-        android:text="Sonog Name"
+        android:text="Song Name"
+        android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/imageView_songItem_play"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:text="author's name"
+        android:textColor="#000000"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/imageView_songItem_play"
         app:layout_constraintTop_toBottomOf="@+id/textView_songItem_songName" />
@@ -42,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:text="HighScore"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView_songItem_play"
         app:layout_constraintTop_toBottomOf="@+id/textView_songItem_authorName" />
@@ -52,6 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="76dp"
         android:text="Combo"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView_songItem_highScore" />
 </androidx.constraintlayout.widget.ConstraintLayout>
