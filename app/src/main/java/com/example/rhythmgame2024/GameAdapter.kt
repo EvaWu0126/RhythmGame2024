@@ -45,6 +45,7 @@ class GameAdapter(var gameList: List<Features>) :
             viewHolder.textViewCombo.text = "Combo: " + gameList[position].combo.toString()
             viewHolder.textViewHighScore.text = "High Score: " + gameList[position].highScore.toString()
 
+            // play button
             viewHolder.imageViewPlay.setOnClickListener{
                 val detailIntent = Intent(context, GameScreen::class.java)
                 detailIntent.putExtra(GameScreen.EXTRA_GAME, features)

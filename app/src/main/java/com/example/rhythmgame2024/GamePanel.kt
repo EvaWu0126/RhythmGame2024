@@ -1,6 +1,8 @@
 package com.example.rhythmgame2024
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.PointF
@@ -25,10 +27,12 @@ class GamePanel(context: Context?) : SurfaceView(context), SurfaceHolder.Callbac
 
     // method handle screen render
     fun render() {
-        val c = holder.lockCanvas()
+        val c : Canvas = holder.lockCanvas()
         c.drawColor(Color.BLACK)
 
-        //c.drawBitmap(GameBeats.BEAT.getBeats(), 10.5, 10.5, null)
+        c.drawBitmap(GameBeats.BEAT.beats, 400F, 0F, null)
+        c.drawBitmap(GameBeats.BEATTAP.tapCheck, 380F,700F,null)
+        c.drawBitmap(GameBeats.LINE.line, 350F,100F,null)
 
         holder.unlockCanvasAndPost(c)
     }
@@ -41,6 +45,7 @@ class GamePanel(context: Context?) : SurfaceView(context), SurfaceHolder.Callbac
     }
 
     // method handle user touch screen
+    @SuppressLint("SuspiciousIndentation")
     override fun onTouchEvent(event: MotionEvent?): Boolean {
 
         if(event?.getAction() == MotionEvent.ACTION_DOWN)

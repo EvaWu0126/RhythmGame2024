@@ -3,6 +3,7 @@ package com.example.rhythmgame2024
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 
 class GameScreen : AppCompatActivity() {
@@ -12,12 +13,14 @@ class GameScreen : AppCompatActivity() {
         var gameContext: Context? = null
     }
 
-    private var gameContext: Context? = null
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         gameContext = this
         setContentView(GamePanel(this))
+        Log.d("GameScreen", "onCreate: Started gameScreen")
 
 
     }

@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapter : GameAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
         val inputStream = resources.openRawResource(R.raw.info)
@@ -34,6 +34,10 @@ class MainActivity : AppCompatActivity() {
         adapter = GameAdapter(songInfo)
         binding.recyclerViewMainSongList.adapter = adapter
         binding.recyclerViewMainSongList.layoutManager = LinearLayoutManager(this)
+
+
+
+
 
     }
 
