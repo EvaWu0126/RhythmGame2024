@@ -27,5 +27,20 @@
     {
         "name": "Party In The U.S.A.",
         "author": "Miley Cyrus"
+    },
+    {
+        "name": "Dancing Queen",
+        "link": "https://youtu.be/xFrGuyw1V8s?si=3sTTdabp9_QaXAH6",
+        "author": "ABBA"
+    },
+    {
+        "name": "I’m Just Ken",
+        "link": "https://youtu.be/wwux9KiBMjE?si=g7xHGj4ihFNAuDfi",
+        "author": "Ryan Gosling"
+    },
+    {
+        "name": "Someone In The Crowd",
+        "link": "https://youtu.be/cmkZeTX5fq0?si=Ht6Fvva_OrvB1jzr",
+        "author": "La La Land"
     }
 ]

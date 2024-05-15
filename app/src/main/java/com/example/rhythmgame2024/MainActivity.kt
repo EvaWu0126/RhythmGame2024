@@ -1,13 +1,15 @@
 package com.example.rhythmgame2024
 
 import android.content.pm.ActivityInfo
-import androidx.appcompat.app.AppCompatActivity
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rhythmgame2024.databinding.ActivityMainBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+
 
 class MainActivity : AppCompatActivity() {
     companion object{
@@ -20,6 +22,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
+//        to start music
+//        val music: MediaPlayer = MediaPlayer.create(this@MainActivity, R.raw.music)
+//        music.start()
         val inputStream = resources.openRawResource(R.raw.info)
         val jsonString = inputStream.bufferedReader().use {
             it.readText()
