@@ -1,6 +1,5 @@
 package com.example.rhythmgame2024
 
-import android.R
 import android.content.pm.ActivityInfo
 import android.media.MediaPlayer
 import android.os.Bundle
