@@ -5,6 +5,8 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class GameScreen : AppCompatActivity() {
     companion object{
@@ -18,9 +20,14 @@ class GameScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val rhythmGame = intent.getParcelableExtra<Features>(EXTRA_GAME)
         gameContext = this
-        setContentView(GamePanel(this))
+        if (rhythmGame != null) {
+            setContentView(GamePanel(this, rhythmGame.beatmap))
+        }
         Log.d("GameScreen", "onCreate: Started gameScreen")
+
+
 
 
     }

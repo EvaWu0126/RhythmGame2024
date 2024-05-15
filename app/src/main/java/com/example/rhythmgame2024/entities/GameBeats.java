@@ -11,8 +11,18 @@ import com.example.rhythmgame2024.R;
 public enum GameBeats {
 
     BEAT(R.drawable.beats),
-    BEATTAP(R.drawable.tap_beat_check),
-    LINE(R.drawable.line);
+    BEATTAP1(R.drawable.tap_beat_check),
+    BEATTAP2(R.drawable.tap_beat_check),
+    BEATTAP3(R.drawable.tap_beat_check),
+    BEATTAP4(R.drawable.tap_beat_check),
+    BEATTAP5(R.drawable.tap_beat_check),
+    BEATTAP6(R.drawable.tap_beat_check),
+    LINE1(R.drawable.line),
+    LINE2(R.drawable.line),
+    LINE3(R.drawable.line),
+    LINE4(R.drawable.line),
+    LINE5(R.drawable.line),
+    LINE6(R.drawable.line);
 
     private Bitmap beats;
     private Bitmap tapCheck;
@@ -21,11 +31,11 @@ public enum GameBeats {
 
     GameBeats(int resID) {
         beats = BitmapFactory.decodeResource(GameScreen.Companion.getGameContext().getResources(), resID, options);
-        beats = getScaledBitmap(beats, 0.6, 0.6);
+        beats = getScaledBitmap(beats, 0.65, 0.65);
         tapCheck = BitmapFactory.decodeResource(GameScreen.Companion.getGameContext().getResources(), resID, options);
-        tapCheck = getScaledBitmap(tapCheck, 0.8,0.8);
+        tapCheck = getScaledBitmap(tapCheck, 0.4,0.4);
         line = BitmapFactory.decodeResource(GameScreen.Companion.getGameContext().getResources(), resID, options);
-        line = getScaledBitmap(line, 0.5,2);
+        line = getScaledBitmap(line, 0.2,7);
 
     }
 

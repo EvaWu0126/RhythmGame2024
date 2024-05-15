@@ -12,10 +12,12 @@ import android.view.SurfaceHolder
 import android.view.SurfaceView
 import com.example.rhythmgame2024.entities.GameBeats
 
-class GamePanel(context: Context?) : SurfaceView(context), SurfaceHolder.Callback {
+class GamePanel(context: Context?, beatmap : List<List<Int>>) : SurfaceView(context), SurfaceHolder.Callback {
     private val redPaint = Paint()
     private val holder: SurfaceHolder = getHolder()
     //private var gameloop: GameLoop
+
+    private val beatmap : List<List<Int>> = beatmap
 
 
     init {
@@ -23,6 +25,14 @@ class GamePanel(context: Context?) : SurfaceView(context), SurfaceHolder.Callbac
         redPaint.color = Color.RED
 
         //gameloop = GameLoop(this)
+
+        for(row in beatmap) {
+            for (col in row) {
+                if(col == 1){
+
+                }
+            }
+        }
     }
 
     // method handle screen render
@@ -30,12 +40,23 @@ class GamePanel(context: Context?) : SurfaceView(context), SurfaceHolder.Callbac
         val c : Canvas = holder.lockCanvas()
         c.drawColor(Color.BLACK)
 
-        c.drawBitmap(GameBeats.BEAT.beats, 400F, 0F, null)
-        c.drawBitmap(GameBeats.BEATTAP.tapCheck, 380F,700F,null)
-        c.drawBitmap(GameBeats.LINE.line, 350F,100F,null)
+        c.drawBitmap(GameBeats.LINE1.line, 300F,-730F,null)
+        c.drawBitmap(GameBeats.LINE2.line, 600F,-730F,null)
+        c.drawBitmap(GameBeats.LINE3.line, 900F,-730F,null)
+        c.drawBitmap(GameBeats.LINE4.line, 1200F,-730F,null)
+        c.drawBitmap(GameBeats.LINE5.line, 1500F,-730F,null)
+        c.drawBitmap(GameBeats.LINE6.line, 1800F,-730F,null)
+        c.drawBitmap(GameBeats.BEATTAP1.tapCheck, 270F,730F,null)
+        c.drawBitmap(GameBeats.BEATTAP2.tapCheck, 570F,730F,null)
+        c.drawBitmap(GameBeats.BEATTAP3.tapCheck, 870F,730F,null)
+        c.drawBitmap(GameBeats.BEATTAP4.tapCheck, 1170F,730F,null)
+        c.drawBitmap(GameBeats.BEATTAP5.tapCheck, 1470F,730F,null)
+        c.drawBitmap(GameBeats.BEATTAP6.tapCheck, 1770F,730F,null)
+
 
         holder.unlockCanvasAndPost(c)
     }
+
 
 
     override fun surfaceCreated(surfaceHolder: SurfaceHolder) {
