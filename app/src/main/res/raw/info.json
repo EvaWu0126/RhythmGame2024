@@ -6,41 +6,78 @@
             [0,1,0,0,0,0],
             [1,0,0,1,0,0],
             [0,0,0,0,1,1],
-            [0,0,0,0,0,1]]
+            [0,0,1,0,0,1]]
     },
     {
         "name": "Phony",
-        "author": "Tsumiki (pjsk ver)"
+        "author": "Tsumiki (pjsk ver)",
+        "beatmap": [
+            [0,1,0,0,0,0],
+            [1,0,0,1,0,0],
+            [0,0,0,0,1,1],
+            [0,0,0,0,0,1]]
     },
     {
         "name": "Cutlery",
-        "author": "Yoh Kamiyama"
+        "author": "Yoh Kamiyama",
+        "beatmap": [
+            [0,1,0,0,0,0],
+            [1,0,0,1,0,0],
+            [0,0,0,0,1,1],
+            [0,0,0,0,0,1]]
     },
     {
          "name": "VORTEX",
-         "author": "BaishaJAWS"
+         "author": "BaishaJAWS",
+        "beatmap": [
+            [0,1,0,0,0,0],
+            [1,0,0,1,0,0],
+            [0,0,0,0,1,1],
+            [0,0,0,0,0,1]]
     },
     {
         "name": "From The Start",
-        "author": "Laufey"
+        "author": "Laufey",
+        "beatmap": [
+            [0,1,0,0,0,0],
+            [1,0,0,1,0,0],
+            [0,0,0,0,1,1],
+            [0,0,0,0,0,1]]
     },
     {
         "name": "Party In The U.S.A.",
-        "author": "Miley Cyrus"
+        "author": "Miley Cyrus",
+        "beatmap": [
+            [0,1,0,0,0,0],
+            [1,0,0,1,0,0],
+            [0,0,0,0,1,1],
+            [0,0,0,0,0,1]]
     },
     {
         "name": "Dancing Queen",
-        "link": "https://youtu.be/xFrGuyw1V8s?si=3sTTdabp9_QaXAH6",
-        "author": "ABBA"
+        "author": "ABBA",
+        "beatmap": [
+            [0,1,0,0,0,0],
+            [1,0,0,1,0,0],
+            [0,0,0,0,1,1],
+            [0,0,0,0,0,1]]
     },
     {
         "name": "I’m Just Ken",
-        "link": "https://youtu.be/wwux9KiBMjE?si=g7xHGj4ihFNAuDfi",
-        "author": "Ryan Gosling"
+        "author": "Ryan Gosling",
+        "beatmap": [
+            [0,1,0,0,0,0],
+            [1,0,0,1,0,0],
+            [0,0,0,0,1,1],
+            [0,0,0,0,0,1]]
     },
     {
         "name": "Someone In The Crowd",
-        "link": "https://youtu.be/cmkZeTX5fq0?si=Ht6Fvva_OrvB1jzr",
-        "author": "La La Land"
+        "author": "La La Land",
+        "beatmap": [
+            [0,1,0,0,0,0],
+            [1,0,0,1,0,0],
+            [0,0,0,0,1,1],
+            [0,0,0,0,0,1]]
     }
 ]

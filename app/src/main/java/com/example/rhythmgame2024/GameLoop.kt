@@ -11,7 +11,7 @@ class GameLoop(gamePanel: GamePanel) : Runnable{
     override fun run() {
         while (true){
             Log.d("GameLoop", "run: gameLoop rendering")
-            gamePanel.render()
+            gamePanel.render(0f)
         }
     }
 

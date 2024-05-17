@@ -14,29 +14,51 @@ import com.example.rhythmgame2024.entities.GameBeats
 
 class GamePanel(context: Context?, beatmap : List<List<Int>>) : SurfaceView(context), SurfaceHolder.Callback {
     private val redPaint = Paint()
-    private val holder: SurfaceHolder = getHolder()
+    private var holder: SurfaceHolder = getHolder()
     //private var gameloop: GameLoop
 
-    private val beatmap : List<List<Int>> = beatmap
+    private val rawBeat : List<List<Int>> = beatmap
 
 
     init {
         holder.addCallback(this)
         redPaint.color = Color.RED
+//        makeBeats()
 
+
+    }
+
+    fun makeBeats() {
+        Log.d("gamepanel", "is canvas null?: ${holder.lockCanvas()} ")
         //gameloop = GameLoop(this)
 
-        for(row in beatmap) {
-            for (col in row) {
-                if(col == 1){
 
+        // beatmap tracing
+        var x : Float = 0F
+        for(row in rawBeat) {
+            for (col in row) {
+                if(row[col] == 1){
+                    if(col == 1){
+                        x = 270F
+                    }else if(col == 2){
+                        x = 570F
+                    }else if(col == 3){
+                        x = 870F
+                    }else if(col == 4){
+                        x = 1170F
+                    }else if(col == 5){
+                        x = 1470F
+                    }else if(col == 6){
+                        x = 1770F
+                    }
+                    render(x)
                 }
             }
         }
     }
 
     // method handle screen render
-    fun render() {
+    fun render(left : Float){
         val c : Canvas = holder.lockCanvas()
         c.drawColor(Color.BLACK)
 
@@ -53,6 +75,10 @@ class GamePanel(context: Context?, beatmap : List<List<Int>>) : SurfaceView(cont
         c.drawBitmap(GameBeats.BEATTAP5.tapCheck, 1470F,730F,null)
         c.drawBitmap(GameBeats.BEATTAP6.tapCheck, 1770F,730F,null)
 
+        c.drawBitmap(GameBeats.BEAT.beats, left, 0F, null)
+
+        // draw text function
+        //c.drawText("Flos", 100F,100F, redPaint)
 
         holder.unlockCanvasAndPost(c)
     }
@@ -60,9 +86,11 @@ class GamePanel(context: Context?, beatmap : List<List<Int>>) : SurfaceView(cont
 
 
     override fun surfaceCreated(surfaceHolder: SurfaceHolder) {
-        render()
+        render(x)
 //        gameloop.startGameLoop()
-//        Log.d("GamePanel", "GamePanel: gameloop activated")
+        Log.d("GamePanel", "GamePanel: surfacecreated")
+//        makeBeats()
+
     }
 
     // method handle user touch screen

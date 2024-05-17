@@ -26,6 +26,7 @@ class GameScreen : AppCompatActivity() {
             setContentView(GamePanel(this, rhythmGame.beatmap))
         }
         Log.d("GameScreen", "onCreate: Started gameScreen")
+        Log.d("GameScreen", "onCreate: ${rhythmGame?.beatmap}")
 
 
 
