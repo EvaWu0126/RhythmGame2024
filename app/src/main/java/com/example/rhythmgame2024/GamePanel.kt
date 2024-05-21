@@ -20,7 +20,7 @@ class GamePanel(context: Context?, beatmap : List<List<Int>>) : SurfaceView(cont
 
     private val rawBeat : List<List<Int>> = beatmap
 
-    // beatList is not initialized???
+    // beatList is not initialized??
     private lateinit var beatList : MutableList<PointF>
 
 
