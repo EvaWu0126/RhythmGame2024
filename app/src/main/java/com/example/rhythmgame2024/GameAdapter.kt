@@ -30,6 +30,7 @@ class GameAdapter(var gameList: List<Features>) :
                 textViewCombo = view.findViewById(R.id.textView_songItem_combo)
                 layout = view.findViewById(R.id.layout_songItem)
                 imageViewPlay = view.findViewById(R.id.imageView_songItem_play)
+
             }
         }
         override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder{
