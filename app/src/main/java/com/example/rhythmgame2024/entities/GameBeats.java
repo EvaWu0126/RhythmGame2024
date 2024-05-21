@@ -10,7 +10,12 @@ import com.example.rhythmgame2024.R;
 
 public enum GameBeats {
 
-    BEAT(R.drawable.beats),
+    BEAT1(R.drawable.beats),
+    BEAT2(R.drawable.beats),
+    BEAT3(R.drawable.beats),
+    BEAT4(R.drawable.beats),
+    BEAT5(R.drawable.beats),
+    BEAT6(R.drawable.beats),
     BEATTAP1(R.drawable.tap_beat_check),
     BEATTAP2(R.drawable.tap_beat_check),
     BEATTAP3(R.drawable.tap_beat_check),

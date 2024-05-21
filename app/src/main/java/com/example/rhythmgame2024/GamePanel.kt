@@ -10,6 +10,8 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
+import androidx.core.graphics.get
+import androidx.core.graphics.set
 import com.example.rhythmgame2024.entities.GameBeats
 
 class GamePanel(context: Context?, beatmap : List<List<Int>>) : SurfaceView(context), SurfaceHolder.Callback {
@@ -33,28 +35,6 @@ class GamePanel(context: Context?, beatmap : List<List<Int>>) : SurfaceView(cont
         //gameloop = GameLoop(this)
 
 
-        // beatmap tracing
-        var x : Float = 0F
-        for(row in rawBeat) {
-            for (col in row) {
-                if(row[col] == 1){
-                    if(col == 1){
-                        x = 270F
-                    }else if(col == 2){
-                        x = 570F
-                    }else if(col == 3){
-                        x = 870F
-                    }else if(col == 4){
-                        x = 1170F
-                    }else if(col == 5){
-                        x = 1470F
-                    }else if(col == 6){
-                        x = 1770F
-                    }
-                    render(x)
-                }
-            }
-        }
     }
 
     // method handle screen render
@@ -75,7 +55,26 @@ class GamePanel(context: Context?, beatmap : List<List<Int>>) : SurfaceView(cont
         c.drawBitmap(GameBeats.BEATTAP5.tapCheck, 1470F,730F,null)
         c.drawBitmap(GameBeats.BEATTAP6.tapCheck, 1770F,730F,null)
 
-        c.drawBitmap(GameBeats.BEAT.beats, left, 0F, null)
+        for(row in rawBeat) {
+            for (col in row) {
+                if(row[col] == 1){
+                    if(col == 0){
+                        c.drawBitmap(GameBeats.BEAT1.beats, 240F, 0F, null)
+                    }else if(col == 1){
+                        c.drawBitmap(GameBeats.BEAT2.beats, 540F, 0F, null)
+                    }else if(col == 2){
+                        c.drawBitmap(GameBeats.BEAT3.beats, 840F, 0F, null)
+                    }else if(col == 3){
+                        c.drawBitmap(GameBeats.BEAT4.beats, 1140F, 0F, null)
+                    }else if(col == 4){
+                        c.drawBitmap(GameBeats.BEAT5.beats, 1440F, 0F, null)
+                    }else if(col == 5){
+                        c.drawBitmap(GameBeats.BEAT6.beats, 1740F, 0F, null)
+                    }
+                }
+            }
+        }
+
 
         // draw text function
         //c.drawText("Flos", 100F,100F, redPaint)
@@ -86,7 +85,7 @@ class GamePanel(context: Context?, beatmap : List<List<Int>>) : SurfaceView(cont
 
 
     override fun surfaceCreated(surfaceHolder: SurfaceHolder) {
-        render(x)
+        render(0F)
 //        gameloop.startGameLoop()
         Log.d("GamePanel", "GamePanel: surfacecreated")
 //        makeBeats()
