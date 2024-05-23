@@ -13,6 +13,7 @@ import com.google.gson.reflect.TypeToken
 
 class MainActivity : AppCompatActivity() {
     companion object{
+        val EXTRA_MAIN = "main"
         val TAG = "MainActivity"
     }
     private lateinit var binding: ActivityMainBinding

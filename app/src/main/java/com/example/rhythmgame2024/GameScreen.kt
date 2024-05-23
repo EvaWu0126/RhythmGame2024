@@ -2,6 +2,7 @@ package com.example.rhythmgame2024
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -28,7 +29,10 @@ class GameScreen : AppCompatActivity() {
         Log.d("GameScreen", "onCreate: Started gameScreen")
         Log.d("GameScreen", "onCreate: ${rhythmGame?.beatmap}")
 
-
+        //if() end
+        val detailIntent = Intent(gameContext, EndScreen::class.java)
+        detailIntent.putExtra(EndScreen.EXTRA_END, rhythmGame)
+        (gameContext as GameScreen).startActivity(detailIntent)
 
 
     }
