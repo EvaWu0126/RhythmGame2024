@@ -30,9 +30,9 @@ class GameScreen : AppCompatActivity() {
         Log.d("GameScreen", "onCreate: ${rhythmGame?.beatmap}")
 
         //if() end
-        val detailIntent = Intent(gameContext, EndScreen::class.java)
-        detailIntent.putExtra(EndScreen.EXTRA_END, rhythmGame)
-        (gameContext as GameScreen).startActivity(detailIntent)
+//        val detailIntent = Intent(gameContext, EndScreen::class.java)
+//        detailIntent.putExtra(EndScreen.EXTRA_END, rhythmGame)
+//        (gameContext as GameScreen).startActivity(detailIntent)
 
 
     }
