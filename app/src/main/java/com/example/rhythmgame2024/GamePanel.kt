@@ -75,7 +75,7 @@ class GamePanel(context: Context?, beatmap : List<List<Int>>) : SurfaceView(cont
                 //Log.d("beat", "render_col: ${col}")
                 if (rawBeat[currentRow][col] == 1) {
                     if (col == 0) {
-                        c.drawBitmap(GameBeats.BEAT1.beats, pos.x, pos.y, null)
+                        c.drawBitmap(GameBeats.BEAT1.beats, 240F, pos.y, null)
                         Log.d("Render Beats", "render: ${pos.y}")
                     } else if (col == 1) {
                         c.drawBitmap(GameBeats.BEAT2.beats, 540F, pos.y, null)
@@ -102,21 +102,27 @@ class GamePanel(context: Context?, beatmap : List<List<Int>>) : SurfaceView(cont
     }
 
     fun update(delta: Float){
-        for (pos in beatList) {
+        for (i in beatList.indices) {
+            var pos = beatList[i]
             pos.y += delta * 30
             Log.d("pos", "update: ${beatList}")
 
             if (pos.y >= 1080) {
-                pos.y = -50F
                 currentRow ++
                 Log.d("update", "update: ${currentRow}")
+                beatListUpdate();
             }
         }
-        //beatListUpdate();
+
+        if(currentRow >= rawBeat.size-1){
+            Log.d("end", "update: ${rawBeat.size}")
+            gameloop.endGameLoop()
+        }
 
     }
 
     fun beatListUpdate(){
+        beatList.clear()
         var x : Float = 0F
         for (col in rawBeat[currentRow].indices) {
             if(rawBeat[currentRow][col] == 1){
@@ -144,7 +150,6 @@ class GamePanel(context: Context?, beatmap : List<List<Int>>) : SurfaceView(cont
 
     override fun surfaceCreated(surfaceHolder: SurfaceHolder) {
         gameloop.startGameLoop()
-        beatListUpdate()
         Log.d("GamePanel", "GamePanel: surfacecreated")
 //        makeBeats()
 

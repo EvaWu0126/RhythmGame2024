@@ -43,8 +43,8 @@ class GameAdapter(var gameList: List<Features>) :
             viewHolder.textViewSongName.text = gameList[position].name
             viewHolder.textViewAuthorName.text = gameList[position].author
             Log.d(TAG, "onBindViewHolder: name =" + viewHolder.textViewSongName.text + " author = " + viewHolder.textViewAuthorName.text)
-            viewHolder.textViewCombo.text = "Combo: " + gameList[position].combo.toString()
-            viewHolder.textViewHighScore.text = "High Score: " + gameList[position].score.toString()
+            viewHolder.textViewCombo.text = "Combo: " + gameList[position].maxCombo.toString()
+            viewHolder.textViewHighScore.text = "High Score: " + gameList[position].highScore.toString()
 
             // play button
             viewHolder.imageViewPlay.setOnClickListener{
