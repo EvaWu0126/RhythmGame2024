@@ -11,6 +11,8 @@ import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import com.example.rhythmgame2024.entities.GameBeats
+import kotlinx.coroutines.delay
+import java.util.logging.Handler
 
 
 class GamePanel(context: Context?, beatmap : List<List<Int>>) : SurfaceView(context), SurfaceHolder.Callback {
@@ -18,7 +20,10 @@ class GamePanel(context: Context?, beatmap : List<List<Int>>) : SurfaceView(cont
     private var holder: SurfaceHolder = getHolder()
     private var gameloop: GameLoop
 
+    private var currentRow : Int = 0
+
     private val rawBeat : List<List<Int>> = beatmap
+
 
     // beatList is not initialized??
     private var beatList : MutableList<PointF> = mutableListOf<PointF>()
@@ -33,30 +38,8 @@ class GamePanel(context: Context?, beatmap : List<List<Int>>) : SurfaceView(cont
         gameloop = GameLoop(this)
         //makeBeats()
 
-        var x : Float = 0F
-        for(row in rawBeat.indices) {
-            for (col in rawBeat[row].indices) {
-                if(rawBeat[row][col] == 1){
-                    if(col == 0){
-                        x = 240F
-                    }else if(col == 1){
-                        x = 540F
-                    }else if(col == 2){
-                        x = 840F
-                    }else if(col == 3){
-                        x = 1140F
-                    }else if(col == 4){
-                        x = 1440F
-                    }else if(col == 5){
-                        x = 1740F
-                    }
-                }
-                beatList.add(PointF(x, 0F))
-            }
-        }
-        Log.d("TAG", "Init: ${beatList}")
-
-
+        beatListUpdate()
+        Log.d("test", "testing: ${rawBeat}")
     }
 
     fun makeBeats() {
@@ -68,6 +51,8 @@ class GamePanel(context: Context?, beatmap : List<List<Int>>) : SurfaceView(cont
 
     // method handle screen render
     public fun render(left : Float){
+
+
         val c : Canvas = holder.lockCanvas()
         c.drawColor(Color.BLACK)
 
@@ -86,25 +71,22 @@ class GamePanel(context: Context?, beatmap : List<List<Int>>) : SurfaceView(cont
 
         for(pos in beatList) {
             //Log.d("beat", "rende_rawBeat: ${rawBeat}")
-            for (row in rawBeat.indices) {
-                //Log.d("beat", "render_row: ${row}")
-                for (col in rawBeat[row].indices) {
-                    //Log.d("beat", "render_col: ${col}")
-                    if (rawBeat[row][col] == 1) {
-                        if (col == 0) {
-                            c.drawBitmap(GameBeats.BEAT1.beats, 240F, pos.y, null)
-                            Log.d("Render Beats", "render: ${pos.y}")
-                        } else if (col == 1) {
-                            c.drawBitmap(GameBeats.BEAT2.beats, 540F, pos.y, null)
-                        } else if (col == 2) {
-                            c.drawBitmap(GameBeats.BEAT3.beats, 840F, pos.y, null)
-                        } else if (col == 3) {
-                            c.drawBitmap(GameBeats.BEAT4.beats, 1140F, pos.y, null)
-                        } else if (col == 4) {
-                            c.drawBitmap(GameBeats.BEAT5.beats, 1440F, pos.y, null)
-                        } else if (col == 5) {
-                            c.drawBitmap(GameBeats.BEAT6.beats, 1740F, pos.y, null)
-                        }
+            for (col in rawBeat[currentRow].indices) {
+                //Log.d("beat", "render_col: ${col}")
+                if (rawBeat[currentRow][col] == 1) {
+                    if (col == 0) {
+                        c.drawBitmap(GameBeats.BEAT1.beats, pos.x, pos.y, null)
+                        Log.d("Render Beats", "render: ${pos.y}")
+                    } else if (col == 1) {
+                        c.drawBitmap(GameBeats.BEAT2.beats, 540F, pos.y, null)
+                    } else if (col == 2) {
+                        c.drawBitmap(GameBeats.BEAT3.beats, 840F, pos.y, null)
+                    } else if (col == 3) {
+                        c.drawBitmap(GameBeats.BEAT4.beats, 1140F, pos.y, null)
+                    } else if (col == 4) {
+                        c.drawBitmap(GameBeats.BEAT5.beats, 1440F, pos.y, null)
+                    } else if (col == 5) {
+                        c.drawBitmap(GameBeats.BEAT6.beats, 1740F, pos.y, null)
                     }
                 }
             }
@@ -117,25 +99,52 @@ class GamePanel(context: Context?, beatmap : List<List<Int>>) : SurfaceView(cont
         //c.drawText("Flos", 100F,100F, redPaint)
 
         holder.unlockCanvasAndPost(c)
-
     }
 
     fun update(delta: Float){
         for (pos in beatList) {
-            pos.y += delta * 300
-            Log.d("pos", "update: ${pos.y}")
+            pos.y += delta * 30
+            Log.d("pos", "update: ${beatList}")
 
-            if (pos.y >= 1500) {
-                pos.y = 0F
+            if (pos.y >= 1080) {
+                pos.y = -50F
+                currentRow ++
+                Log.d("update", "update: ${currentRow}")
             }
-
         }
+        //beatListUpdate();
+
+    }
+
+    fun beatListUpdate(){
+        var x : Float = 0F
+        for (col in rawBeat[currentRow].indices) {
+            if(rawBeat[currentRow][col] == 1){
+                if(col == 0){
+                    x = 240F
+                }else if(col == 1){
+                    x = 540F
+                }else if(col == 2){
+                    x = 840F
+                }else if(col == 3){
+                    x = 1140F
+                }else if(col == 4){
+                    x = 1440F
+                }else if(col == 5){
+                    x = 1740F
+                }
+            }
+            beatList.add(PointF(x, -50F))
+        }
+        Log.d("TAG", "Init: ${beatList}")
+        Log.d("TAG", "Init: ${beatList.count()}")
     }
 
 
 
     override fun surfaceCreated(surfaceHolder: SurfaceHolder) {
         gameloop.startGameLoop()
+        beatListUpdate()
         Log.d("GamePanel", "GamePanel: surfacecreated")
 //        makeBeats()
 

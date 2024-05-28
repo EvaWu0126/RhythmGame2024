@@ -14,8 +14,9 @@ public class GameLoop  implements Runnable{
     public void run(){
 
         while(true){
-            gamePanel.update(100F);
+            gamePanel.update(1F);
             gamePanel.render(0F);
+            //gamePanel.beatListUpdate();
         }
     }
 
