@@ -20,30 +20,31 @@ class EndScreen : AppCompatActivity() {
         val features = intent.getParcelableExtra<Features>(GameScreen.EXTRA_GAME)
         val context = this
         //high score
-        binding.textViewEndScreenScore.text = features?.score.toString()
+        binding.textViewEndScreenScore.text = features?.highScore.toString()
+        //name
         binding.textViewEndScreenName.text = features?.name
         //max combo
-        binding.textViewEndScreenMaxCombo.text = "Max Combo: " + features?.combo.toString()
+        binding.textViewEndScreenMaxCombo.text = "Max Combo: " + features?.maxCombo.toString()
         //rating, if score is higher than some number and combo is greater than some number, idk about numbers yet so not done
-        if(features?.score!! > 10000 && features?.combo!! > 100){
+        if(features?.highScore!! > 10000 && features?.maxCombo!! > 100){
             binding.textViewEndScreenRating.text = "SS"
         }
-        else if(features?.score!! > 100000 && features?.combo!! > 50){
+        else if(features?.highScore!! > 100000 && features?.maxCombo!! > 50){
             binding.textViewEndScreenRating.text = "S"
         }
-        else if(features?.score!! > 10000 && features?.combo!! > 25){
+        else if(features?.highScore!! > 10000 && features?.maxCombo!! > 25){
             binding.textViewEndScreenRating.text = "A"
         }
-        else if(features?.score!! > 1000 && features?.combo!! > 12){
+        else if(features?.highScore!! > 1000 && features?.maxCombo!! > 12){
             binding.textViewEndScreenRating.text = "B"
         }
-        else if(features?.score!! > 100 && features?.combo!! > 6){
+        else if(features?.highScore!! > 100 && features?.maxCombo!! > 6){
             binding.textViewEndScreenRating.text = "C"
         }
-        else if(features?.score!! > 100 && features?.combo!! > 3){
+        else if(features?.highScore!! > 100 && features?.maxCombo!! > 3){
             binding.textViewEndScreenRating.text = "D"
         }
-        else if(features?.score!! > 10 && features?.combo!! > 1){
+        else if(features?.highScore!! > 10 && features?.maxCombo!! > 1){
             binding.textViewEndScreenRating.text = "E"
         }
         else{
