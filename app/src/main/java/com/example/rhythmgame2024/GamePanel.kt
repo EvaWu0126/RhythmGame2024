@@ -6,6 +6,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.PointF
+import android.graphics.Rect
 import android.util.Log
 import android.view.MotionEvent
 import android.view.SurfaceHolder
@@ -15,39 +16,37 @@ import kotlinx.coroutines.delay
 import java.util.logging.Handler
 
 
-class GamePanel(context: Context?, beatmap : List<List<Int>>) : SurfaceView(context), SurfaceHolder.Callback {
+class GamePanel(context: Context?, beatmap : List<List<Int>>, songName : String) : SurfaceView(context), SurfaceHolder.Callback {
     private val redPaint = Paint()
+    private val whitePaint = Paint()
     private var holder: SurfaceHolder = getHolder()
     private var gameloop: GameLoop
+    private var name : String = songName
+    var highCombo : Int = 0
+
+    var didGameEnd : Boolean = true
 
     private var currentRow : Int = 0
-
     private val rawBeat : List<List<Int>> = beatmap
-
-
-    // beatList is not initialized??
     private var beatList : MutableList<PointF> = mutableListOf<PointF>()
-    private var x : Float = 0F
-    private var y :Float = 0F
 
 
 
     init {
         holder.addCallback(this)
+
         redPaint.color = Color.RED
+        whitePaint.color = Color.WHITE
+        var textSize : Float = whitePaint.textSize
+        whitePaint.textSize = textSize*5
+
         gameloop = GameLoop(this)
-        //makeBeats()
+
 
         beatListUpdate()
         Log.d("test", "testing: ${rawBeat}")
     }
 
-    fun makeBeats() {
-        Log.d("gamepanel", "is canvas null?: ${holder.lockCanvas()} ")
-        //gameloop = GameLoop(this)
-
-
-    }
 
     // method handle screen render
     public fun render(left : Float){
@@ -96,7 +95,7 @@ class GamePanel(context: Context?, beatmap : List<List<Int>>) : SurfaceView(cont
 
 
         // draw text function
-        //c.drawText("Flos", 100F,100F, redPaint)
+        c.drawText(name, 100F,100F, whitePaint)
 
         holder.unlockCanvasAndPost(c)
     }
@@ -117,6 +116,7 @@ class GamePanel(context: Context?, beatmap : List<List<Int>>) : SurfaceView(cont
         if(currentRow >= rawBeat.size-1){
             Log.d("end", "update: ${rawBeat.size}")
             gameloop.endGameLoop()
+            didGameEnd = true
         }
 
     }
