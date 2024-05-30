@@ -2,27 +2,37 @@ package com.example.rhythmgame2024
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.PointF
 import android.graphics.Rect
+import android.media.MediaPlayer
 import android.util.Log
 import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
+import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import com.example.rhythmgame2024.entities.GameBeats
 import kotlinx.coroutines.delay
 import java.util.logging.Handler
 
 
-class GamePanel(context: Context?, beatmap : List<List<Int>>, songName : String) : SurfaceView(context), SurfaceHolder.Callback {
+class GamePanel(context: Context?, beatmap : List<List<Int>>, songName : String, fileName : String) : SurfaceView(context), SurfaceHolder.Callback {
     private val redPaint = Paint()
     private val whitePaint = Paint()
     private var holder: SurfaceHolder = getHolder()
     private var gameloop: GameLoop
+
+    // init music
+    var res : Resources? = context?.getResources()
+    var soundID : Int? = res?.getIdentifier(fileName, "raw", context?.getPackageName())
+    private var mediaPlayer : MediaPlayer? = soundID?.let { MediaPlayer.create(context, it) }
+
     private var name : String = songName
     var highCombo : Int = 0
+    var score : Int = 0
 
     var didGameEnd : Boolean = true
 
@@ -38,13 +48,14 @@ class GamePanel(context: Context?, beatmap : List<List<Int>>, songName : String)
         redPaint.color = Color.RED
         whitePaint.color = Color.WHITE
         var textSize : Float = whitePaint.textSize
-        whitePaint.textSize = textSize*5
+        whitePaint.textSize = textSize*4
 
         gameloop = GameLoop(this)
 
+        mediaPlayer?.start()
 
         beatListUpdate()
-        Log.d("test", "testing: ${rawBeat}")
+//        Log.d("test", "testing: ${rawBeat}")
     }
 
 
@@ -75,7 +86,7 @@ class GamePanel(context: Context?, beatmap : List<List<Int>>, songName : String)
                 if (rawBeat[currentRow][col] == 1) {
                     if (col == 0) {
                         c.drawBitmap(GameBeats.BEAT1.beats, 240F, pos.y, null)
-                        Log.d("Render Beats", "render: ${pos.y}")
+//                        Log.d("Render Beats", "render: ${pos.y}")
                     } else if (col == 1) {
                         c.drawBitmap(GameBeats.BEAT2.beats, 540F, pos.y, null)
                     } else if (col == 2) {
@@ -95,7 +106,9 @@ class GamePanel(context: Context?, beatmap : List<List<Int>>, songName : String)
 
 
         // draw text function
-        c.drawText(name, 100F,100F, whitePaint)
+        c.drawText(name, 1920F,100F, whitePaint)
+        c.drawText("score: ${score}", 1900F, 170F, whitePaint)
+        c.drawText(highCombo.toString(), 110F, 100F, whitePaint)
 
         holder.unlockCanvasAndPost(c)
     }
@@ -104,18 +117,19 @@ class GamePanel(context: Context?, beatmap : List<List<Int>>, songName : String)
         for (i in beatList.indices) {
             var pos = beatList[i]
             pos.y += delta * 30
-            Log.d("pos", "update: ${beatList}")
+//            Log.d("pos", "update: ${beatList}")
 
-            if (pos.y >= 1080) {
+            if (pos.y >= 1050) {
                 currentRow ++
-                Log.d("update", "update: ${currentRow}")
+//                Log.d("update", "update: ${currentRow}")
                 beatListUpdate();
             }
         }
 
         if(currentRow >= rawBeat.size-1){
-            Log.d("end", "update: ${rawBeat.size}")
+//            Log.d("end", "update: ${rawBeat.size}")
             gameloop.endGameLoop()
+            mediaPlayer?.stop()
             didGameEnd = true
         }
 
@@ -142,15 +156,15 @@ class GamePanel(context: Context?, beatmap : List<List<Int>>, songName : String)
             }
             beatList.add(PointF(x, -50F))
         }
-        Log.d("TAG", "Init: ${beatList}")
-        Log.d("TAG", "Init: ${beatList.count()}")
+//        Log.d("TAG", "Init: ${beatList}")
+//        Log.d("TAG", "Init: ${beatList.count()}")
     }
 
 
 
     override fun surfaceCreated(surfaceHolder: SurfaceHolder) {
         gameloop.startGameLoop()
-        Log.d("GamePanel", "GamePanel: surfacecreated")
+//        Log.d("GamePanel", "GamePanel: surfacecreated")
 //        makeBeats()
 
     }
@@ -159,12 +173,15 @@ class GamePanel(context: Context?, beatmap : List<List<Int>>, songName : String)
     @SuppressLint("SuspiciousIndentation")
     override fun onTouchEvent(event: MotionEvent?): Boolean {
 
-        if(event?.getAction() == MotionEvent.ACTION_DOWN)
+        if(event?.getAction() == MotionEvent.ACTION_DOWN){
 
-
-        Log.d("GamePanel", "onTouchEvent: user Touch")
+        }
+//        Log.d("GamePanel", "onTouchEvent: user Touch")
         return true
     }
+
+
+
 
 
 

@@ -1,12 +1,13 @@
 [
     {
         "name": "Flos",
+        "fileName": "flos",
         "author": "R Sound Design",
         "beatmap": [
             [1,0,1,0,1,1],
-            [0,0,0,0,0,0],
-            [0,0,0,0,0,0],
-            [0,0,0,0,0,0],
+            [0,1,1,0,0,0],
+            [0,0,0,0,1,0],
+            [1,0,0,1,0,0],
             [1,0,1,0,1,1],
             [0,0,0,0,0,0],
             [0,0,0,0,0,0],
@@ -18,6 +19,7 @@
     },
     {
         "name": "Phony",
+        "fileName": "phony",
         "author": "Tsumiki (pjsk ver)",
         "beatmap": [
             [0,1,0,0,0,0],
@@ -27,6 +29,7 @@
     },
     {
         "name": "Cutlery",
+        "fileName": "cutlery",
         "author": "Yoh Kamiyama",
         "beatmap": [
             [0,1,0,0,0,0],
@@ -35,8 +38,9 @@
             [0,0,0,0,0,1]]
     },
     {
-         "name": "VORTEX",
-         "author": "BaishaJAWS",
+        "name": "VORTEX",
+        "fileName": "vortex",
+        "author": "BaishaJAWS",
         "beatmap": [
             [0,1,0,0,0,0],
             [1,0,0,1,0,0],
@@ -45,6 +49,7 @@
     },
     {
         "name": "From The Start",
+        "fileName": "fromthestart",
         "author": "Laufey",
         "beatmap": [
             [0,1,0,0,0,0],
@@ -54,6 +59,7 @@
     },
     {
         "name": "Party In The U.S.A.",
+        "fileName": "partyinusa",
         "author": "Miley Cyrus",
         "beatmap": [
             [0,1,0,0,0,0],
@@ -72,6 +78,7 @@
     },
     {
         "name": "I’m Just Ken",
+        "fileName": "ken",
         "author": "Ryan Gosling",
         "beatmap": [
             [0,1,0,0,0,0],
@@ -81,6 +88,7 @@
     },
     {
         "name": "Someone In The Crowd",
+        "fileName": "lalaland",
         "author": "La La Land",
         "beatmap": [
             [0,1,0,0,0,0],

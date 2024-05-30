@@ -17,7 +17,7 @@ class EndScreen : AppCompatActivity() {
         binding = ActivityEndScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val features = intent.getParcelableExtra<Features>(GameScreen.EXTRA_GAME)
+        var features = intent.getParcelableExtra<Features>(GameScreen.EXTRA_GAME)
         val context = this
         //high score
         binding.textViewEndScreenScore.text = features?.highScore.toString()
@@ -26,6 +26,15 @@ class EndScreen : AppCompatActivity() {
         //max combo
         binding.textViewEndScreenMaxCombo.text = "Max Combo: " + features?.maxCombo.toString()
         //rating, if score is higher than some number and combo is greater than some number, idk about numbers yet so not done
+        if(features == null) {
+            features = Features("Null didn't work", "null didn't work", "null didn't work", highScore = 1, maxCombo = 1, listOf())
+        }
+        if(features?.highScore == null) {
+            features?.highScore = 0
+        }
+        if(features?.maxCombo == null) {
+            features?.maxCombo = 0
+        }
         if(features?.highScore!! > 10000 && features?.maxCombo!! > 100){
             binding.textViewEndScreenRating.text = "SS"
         }

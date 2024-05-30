@@ -25,28 +25,23 @@ class GameScreen : AppCompatActivity() {
         val rhythmGame = intent.getParcelableExtra<Features>(EXTRA_GAME)
 
         gameContext = this
-        // creates the music
-        var mediaPlayer : MediaPlayer = MediaPlayer.create(applicationContext, R.raw.testingsong)
 
         if (rhythmGame != null) {
-            // music playing
-            mediaPlayer.start()
             Log.d("gameScreen", "onCreate: MediaPlayer is playing")
-            setContentView(GamePanel(this, rhythmGame.beatmap, rhythmGame.name))
+            setContentView(GamePanel(this, rhythmGame.beatmap, rhythmGame.name, rhythmGame.fileName))
         }
         Log.d("GameScreen", "onCreate: Started gameScreen")
         Log.d("GameScreen", "onCreate: ${rhythmGame?.beatmap}")
 
-        var highCombo : Int? = rhythmGame?.let { GamePanel(this, it.beatmap,rhythmGame.name).highCombo }
+        var highCombo : Int? = rhythmGame?.let { GamePanel(this, it.beatmap,rhythmGame.name, rhythmGame.fileName).highCombo }
 
         if (rhythmGame != null) {
-            if(GamePanel(this, rhythmGame.beatmap,rhythmGame.name).didGameEnd == true){
-                mediaPlayer.stop()
+            if(GamePanel(this, rhythmGame.beatmap,rhythmGame.name,rhythmGame.fileName).didGameEnd == true){
 
 //                val detailIntent = Intent(gameContext, EndScreen::class.java)
-//                detailIntent.putExtra(EndScreen.EXTRA_END, rhythmGame)
+//                detailIntent.putExtra(GameScreen.EXTRA_GAME, rhythmGame)
 //                (gameContext as GameScreen).startActivity(detailIntent)
-                Log.d("gameScreen", "onCreate: game ended")
+//                Log.d("gameScreen", "onCreate: game ended")
             }
         }
 

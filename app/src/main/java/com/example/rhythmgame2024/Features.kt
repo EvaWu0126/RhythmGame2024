@@ -5,7 +5,8 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Features(val name: String,
+                    val fileName : String,
                     val author: String,
-                    val highScore: Int = 1,
-                    val maxCombo: Int = 0,
+                    var highScore: Int = 1,
+                    var maxCombo: Int = 0,
                     val beatmap: List<List<Int>>) : Parcelable
